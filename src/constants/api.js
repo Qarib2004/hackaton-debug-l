@@ -1,9 +1,9 @@
 const BASE_URL = "http://localhost:3000";
 
 const endpoints = {
-  events: "/api/events",
-  tickets: "/api/tickets",
-  users: "/api/users",
+  events: "/events",
+  tickets: "/tickets",
+  users: "/users",
 };
 
 export { endpoints };
