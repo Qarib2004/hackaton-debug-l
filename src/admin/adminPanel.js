@@ -6,6 +6,12 @@ const eventsTab = document.getElementById("events-tab");
 const eventsTable = document.getElementById("table-events");
 const userTableContent = document.getElementById("userTableContent");
 const eventTableContent = document.getElementById("eventTableContent");
+const editButtons = document.querySelectorAll(".edit-btn");
+const editModal = document.getElementById("editModal");
+const editName = document.getElementById("editName");
+const editCategory = document.getElementById("editCategory");
+const editPrice = document.getElementById("editPrice");
+
 usersTab.addEventListener("click", () => {
   usersTable.style.display = "block";
   eventsTable.style.display = "none";
@@ -71,13 +77,14 @@ async function getEvents() {
   try {
     const res = await axios.get("https://debug-legends-api.glitch.me/events");
     events = res.data;
+    eventTableContent.innerHTML = "";
     const allEvents = events.map((x) => {
       eventTableContent.innerHTML += `
        <tr>
             <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 h-10 w-10">
-                                <img class="h-14 w-12 " src="${x.posterURL}" alt="">
+                        <div class="flex items-center items-center">
+                            <div>
+                                <img class="h-16 w-full " src="${x.posterURL}" alt="">
                             </div>
                             <div class="ml-4">
                                 <div class="text-sm font-medium text-gray-900">
@@ -119,16 +126,96 @@ async function getEvents() {
                     </span>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap  text-sm font-medium">
-                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                        <a href="#" class="ml-2 text-red-600 hover:text-red-900">Delete</a>
+                        <a href="#" class="text-indigo-600 hover:text-indigo-900 editBtn" data-id=${x.id}>Edit</a>
+                        <span class="ml-2 text-red-600 hover:text-red-900 deleteBtn" data-id=${x.id}>Delete</span>
                     </td>
                 </tr>
         `;
+
+      const deleteBtn = document.querySelectorAll(".deleteBtn");
+      deleteBtn.forEach((btn) => {
+        btn.addEventListener("click", async (e) => {
+          const eventId = e.target.getAttribute("data-id");
+          await deleteEvent(eventId);
+        });
+      });
+    });
+
+    const editButtons = document.querySelectorAll(".editBtn");
+    editButtons.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        const id = button.getAttribute("data-id");
+        const name = button.getAttribute("data-name");
+        const category = button.getAttribute("data-category");
+        const price = button.getAttribute("data-price");
+
+        editName.value = name;
+        editCategory.value = category;
+        editPrice.value = price;
+        editModal.classList.remove("hidden");
+        editModal.setAttribute("data-id", id);
+      });
     });
   } catch (error) {
     console.error("Error fetching users:", error);
   }
 }
+
+async function deleteEvent(id) {
+  try {
+    const res = await axios.delete(
+      "https://debug-legends-api.glitch.me/events/" + id
+    );
+    console.log(res);
+
+    getEvents();
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    alert("failed");
+  }
+}
+
+async function editEvent(id) {
+  try {
+    const res = await axios.put(
+      "https://debug-legends-api.glitch.me/events/" + id
+    );
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    alert("failed");
+  }
+}
+
+document
+  .getElementById("editEventForm")
+  .addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const editModal = document.getElementById("editModal");
+    const id = editModal.getAttribute("data-id");
+    const updatedName = document.getElementById("editName").value;
+    const updatedCategory = document.getElementById("editCategory").value;
+    const updatedPrice = document.getElementById("editPrice").value;
+
+    try {
+      await axios.put("https://debug-legends-api.glitch.me/events/${id}", {
+        name: updatedName,
+        category: updatedCategory,
+        price: updatedPrice,
+      });
+
+      alert("Event updated successfully.");
+      editModal.classList.add("hidden");
+      getEvents();
+    } catch (error) {
+      console.error("Error updating event:", error);
+      alert("Failed to update the event. Please try again.");
+    }
+  });
+
+document.getElementById("cancelEdit").addEventListener("click", () => {
+  document.getElementById("editModal").classList.add("hidden");
+});
 
 getUsers();
 getEvents();

@@ -75,7 +75,7 @@ registerForm.addEventListener("submit", async function (event) {
   }
 
   const user = {
-    name: username,
+    username: username,
     email: email,
     password: password,
     profileImage: profileImageURL,

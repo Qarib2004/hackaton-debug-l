@@ -1,4 +1,4 @@
-import { getAllData, getFullUser, editDataById } from "../services/api";
+import { getAllData, getFullUser, editDataById,getDataById } from "../services/api";
 import { endpoints } from "../constants/api";
 const card = document.getElementById("cards");
 const fav = document.getElementById("fav");
@@ -131,3 +131,5 @@ const drawTicketCard = (arr) => {
           `;
   });
 };
+
+

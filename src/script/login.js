@@ -5,7 +5,6 @@ const nameInput = document.querySelector("#username");
 loginForm.addEventListener("submit", async function (event) {
   event.preventDefault();
 
-
   const username = nameInput.value.trim();
   const password = passwordInput.value.trim();
 
@@ -14,10 +13,8 @@ loginForm.addEventListener("submit", async function (event) {
     const users = await response.json();
     console.log(users);
     console.log(username);
-    
-    
 
-    const user = users.find((user) => user.name == username);
+    const user = users.find((user) => user.username == username);
     console.log(user);
     if (user && user.password === password) {
       console.log(user);
@@ -35,30 +32,23 @@ loginForm.addEventListener("submit", async function (event) {
         })
         .then((resp) => {
           console.log(resp.id);
-
           localStorage.setItem("currentUserId", resp.id);
+          Swal.fire({
+            icon: "success",
+            title: "Login Successful",
+            text: "You are now logged in!",
+            timer: 3000,
+            timerProgressBar: true,
+            willClose: () => {
+              window.location.href = "/";
+            },
+          });
         })
         .catch((err) => {
           console.log(err);
         });
 
-      Swal.fire({
-        icon: "success",
-        title: "Login Successful",
-        text: "You are now logged in!",
-        timer: 3000,
-        timerProgressBar: true,
-        willClose: () => {
-          window.location.href = "/";
-        },
-      });
-    } else {
-      islogged = false;
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "You are not admin!",
-      });
+      
     }
   } catch (error) {
     console.error("Error during login:", error);

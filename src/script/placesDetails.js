@@ -1,6 +1,41 @@
 import { getDataById  } from "../services/api/index.js";
   import { endpoints } from "../constants/api.js";
   let placeId=new URLSearchParams(window.location.search).get("id")
+  
+const currentUserId = localStorage.getItem("currentUserId") || null;
+
+if (currentUserId) {
+  getDataById(endpoints.users, currentUserId).then((res) => {
+    console.log(res);
+    const loginWrapper = document.getElementById("users-wrapper");
+    const signInButton = document.getElementById("signIn");
+    const signUpButton = document.getElementById("signUp");
+
+    if (signInButton) signInButton.style.display = "none";
+    if (signUpButton) signUpButton.style.display = "none";
+
+    const userInfoDiv = document.createElement("div");
+    userInfoDiv.id = "userInfo";
+
+    userInfoDiv.innerHTML = `
+          <span >Welcome, ${res.username}!</span>
+          <button id="logOut">Log Out</button>
+      `;
+
+    loginWrapper.appendChild(userInfoDiv);
+
+    const logOutButton = document.getElementById("logOut");
+    logOutButton.addEventListener("click", () => {
+      localStorage.removeItem("currentUserId");
+      userInfoDiv.remove();
+      if (signInButton) signInButton.style.display = "inline-block";
+      if (signUpButton) signUpButton.style.display = "inline-block";
+    });
+  });
+} else {
+  console.log("Not user");
+}
+
 
 async function placesDetails(){
     const placeDetail = document.querySelector(".card");
