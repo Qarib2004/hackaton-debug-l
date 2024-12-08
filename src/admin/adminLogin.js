@@ -1,10 +1,13 @@
-const loginForm = document.querySelector("#login-form");
-const passwordInput = document.querySelector("#password");
-const nameInput = document.querySelector("#username");
+const nameInput = document.getElementById("username");
+const passwordInput = document.getElementById("password");
+// const btn = document.getElementById("id");
+const loginForm = document.getElementById("loginForm");
+
+
+
 
 loginForm.addEventListener("submit", async function (event) {
   event.preventDefault();
-
 
   const username = nameInput.value.trim();
   const password = passwordInput.value.trim();
@@ -12,15 +15,11 @@ loginForm.addEventListener("submit", async function (event) {
   try {
     const response = await fetch("https://debug-legends-api.glitch.me/users");
     const users = await response.json();
-    console.log(users);
-    console.log(username);
-    
-    
 
-    const user = users.find((user) => user.name == username);
+    const user = users.find((user) => user.name === username);
     console.log(user);
-    if (user && user.password === password) {
-      console.log(user);
+    if (user && user.password === password && user.role=="admin") {
+    //   console.log(user);
 
       fetch(`https://debug-legends-api.glitch.me/users/${user.id}`, {
         method: "PATCH",
@@ -45,19 +44,19 @@ loginForm.addEventListener("submit", async function (event) {
       Swal.fire({
         icon: "success",
         title: "Login Successful",
-        text: "You are now logged in!",
+        text: "Welcome to Admin panel !",
         timer: 3000,
         timerProgressBar: true,
         willClose: () => {
-          window.location.href = "/";
+          window.location.href = "./adminPanel.html";
         },
       });
     } else {
-      islogged = false;
+    //   islogged = false;
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "You are not admin!",
+        text: "Invalid username or password.",
       });
     }
   } catch (error) {
@@ -70,18 +69,3 @@ loginForm.addEventListener("submit", async function (event) {
   }
 });
 
-const togglePassword = document.querySelector("#toggle-password");
-
-togglePassword.addEventListener("click", function () {
-  const type = passwordInput.type === "password" ? "text" : "password";
-
-  passwordInput.type = type;
-
-  if (type === "password") {
-    togglePassword.classList.remove("fa-eye-slash");
-    togglePassword.classList.add("fa-eye");
-  } else {
-    togglePassword.classList.remove("fa-eye");
-    togglePassword.classList.add("fa-eye-slash");
-  }
-});
