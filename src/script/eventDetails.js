@@ -1,6 +1,16 @@
-import { getDataById  } from "../services/api/index.js";
+import { editDataById, editDataByIdWithPatch, getDataById  } from "../services/api/index.js";
   import { endpoints } from "../constants/api.js";
   let eventId =new URLSearchParams(window.location.search).get("id")
+ let userId = localStorage.getItem("currentUserId");
+ let userData = null;
+
+ if(userId){
+ getDataById(endpoints.users,userId).then(res =>{
+    userData = res;
+ })
+ }
+
+
 
   async function eventDetails(){
     const eventDetail = document.querySelector(".card");
@@ -8,7 +18,8 @@ import { getDataById  } from "../services/api/index.js";
         const details = await getDataById(endpoints.events, eventId);
         console.log(details)
   
-          const detailsCard =`            <div class="grid grid-cols-1 md:grid-cols-2">
+          const detailsCard =`         
+             <div class="grid grid-cols-1 md:grid-cols-2">
                 <!-- Event Details Section -->
                 <div class="p-8">
                     <h1 class="text-4xl font-bold text-gray-800 mb-4">${details.name}</h1>
@@ -48,14 +59,14 @@ import { getDataById  } from "../services/api/index.js";
                             </svg>
                             Buy
                         </button>
-                        <button
+                        <button id="favBtn"
                             class="bg-gray-200 flex gap-2 items-center text-gray-800 px-6 py-2 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                             </svg>
-                            Favorite
+                           ${ userData?.favorites.find((favs)=> favs.eventId == eventId) ? "Remove favorite" : "Add Favorite"} 
                         </button>
                     </div>
                 </div>
@@ -68,10 +79,44 @@ import { getDataById  } from "../services/api/index.js";
                                         id="mainPoster">
                                 </div>
             </div>`;
+
+
             eventDetail.insertAdjacentHTML("beforeend",detailsCard)
+
+
+                        document.querySelector("#favBtn").addEventListener("click",()=>{
+                if (!userId) {
+                    alert("Log in first");
+                }
+                console.log(userData);
+                
+                let favorites = [...userData.favorites]
+                console.log(favorites);
+                let myFavs = favorites.findIndex((favs)=> favs.eventId == eventId)
+                console.log(myFavs);
+                
+              if (myFavs<0) {
+                favorites.push({
+                    eventId : eventId
+                })
+                editDataByIdWithPatch(endpoints.users, userId, {favorites : [...favorites]}).then(()=>{
+                    window.location.reload()
+                })
+              }else{
+                favorites.splice(myFavs, 1);
+                editDataByIdWithPatch(endpoints.users, userId, {favorites : [...favorites]}).then(()=>{
+                    window.location.reload()
+                })
+              }
+
+
+                
+                
+                
+            })
     }
-    catch{
-        console.error("error")
+    catch(e){
+        console.error(e)
     }
   }
   document.addEventListener("DOMContentLoaded",eventDetails)
