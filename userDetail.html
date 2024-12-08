@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Usr Detail</title>
+    <title>User Detail</title>
     <style>
 #abaut{
     color: #1a2D42;
@@ -16,6 +16,7 @@
     color: #1a2D42;
     font-weight: 600;
 }
+
     </style>
 </head>
 <body>
@@ -30,16 +31,16 @@
     <section class="w-full overflow-hidden dark:bg-gray-900">
 
         <div class="flex flex-col ">
-            <!-- Cover Image -->
+            
             <img src="./src/images/original-dde376fb766e5e28ea29288d4d58ee63.jpg" alt="User Cover"
                 style="background-color: #0F1C24;"    class="w-full  object-contain xl:h-[20rem] lg:h-[18rem] md:h-[16rem] sm:h-[14rem] xs:h-[11rem]" />
     
-            <!-- Profile Image -->
+            
             <div class="sm:w-[80%] xs:w-[90%] mx-auto flex">
                 <img src="https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw3fHxwZW9wbGV8ZW58MHwwfHx8MTcxMTExMTM4N3ww&ixlib=rb-4.0.3&q=80&w=1080" alt="User Profile"
-                        class="rounded-md lg:w-[12rem] lg:h-[12rem] md:w-[10rem] md:h-[10rem] sm:w-[8rem] sm:h-[8rem] xs:w-[7rem] xs:h-[7rem] outline outline-2 outline-offset-2 outline-gray-50 relative lg:bottom-[5rem] sm:bottom-[4rem] xs:bottom-[3rem]" />
+                     id="imagee"   class="rounded-md lg:w-[12rem] lg:h-[12rem] md:w-[10rem] md:h-[10rem] sm:w-[8rem] sm:h-[8rem] xs:w-[7rem] xs:h-[7rem] outline outline-2 outline-offset-2 outline-gray-50 relative lg:bottom-[5rem] sm:bottom-[4rem] xs:bottom-[3rem]" />
     
-                <!-- FullName -->
+                
                 <h1
                 id="bigName"
                     class="w-full text-left my-4 sm:mx-4 xs:pl-4 text-gray-800 dark:text-white lg:text-4xl md:text-3xl sm:text-3xl xs:text-xl font-serif">
@@ -70,22 +71,23 @@
                 Buyed Ticket
             </a>
         </li>
-        <li @click="openTab = 2" :class="{ '-mb-px': openTab === 2 }" class="mr-1">
+        <li @click="openTab = 3" :class="{ '-mb-px': openTab === 3 }" class="mr-1">
             <!-- Set active class by using :class provided by Alpine -->
-            <a href="#" :class="openTab === 2 ? activeClasses : inactiveClasses"
+            <a href="#" :class="openTab === 3 ? activeClasses : inactiveClasses"
               id="buyed"  class="bg-white inline-block py-2 px-4 font-semibold">
                 Favorites
-            </a>
+            </a> 
         </li>
   
     </ul>
+
     <div class="w-full">
         <div x-show="openTab === 1">
             <div class="w-full my-auto py-6 flex flex-col justify-center gap-2">
                 <div class="w-full flex sm:flex-row xs:flex-col gap-2 justify-center">
                     <div class="w-full">
-                        <!-- <dl id="cards" class="text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700">
-                            <div class="flex flex-col pb-3">
+                        <dl id="cards" class="text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700"  style="border:1px solid rgb(180, 180, 180);border-radius:5px;padding: 10px;">
+                            <!-- <div class="flex flex-col pb-3">
                                 <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Name</dt>
                                 <dd class="text-lg font-semibold">Samuel</dd>
                             </div>
@@ -100,8 +102,8 @@
                             <div class="flex flex-col py-3">
                                 <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Total Spent Money</dt>
                                 <dd class="text-lg font-semibold">Male</dd>
-                            </div>
-                        </dl> -->
+                            </div> -->
+                        </dl>
                     </div>
                   
                 </div>
@@ -114,7 +116,62 @@
                 </div>
             </div>
         </div>
-        <div x-show="openTab === 2">Tab #2</div>
+        <div x-show="openTab === 2">
+            <div class="w-full my-auto py-6 flex flex-col justify-center gap-2">
+                <div class="w-full flex sm:flex-row xs:flex-col gap-2 justify-center">
+                    <div class="w-full">
+                        <dl id="tickets" class="text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700" style="border:1px solid rgb(180, 180, 180);border-radius:5px;padding: 10px;">
+                            <!-- <div class="flex flex-col pb-3">
+                                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Name</dt>
+                                <dd class="text-lg font-semibold">Samuel</dd>
+                            </div>
+                            <div class="flex flex-col py-3">
+                                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">e-mail</dt>
+                                <dd class="text-lg font-semibold">Abera</dd>
+                            </div>
+                            <div class="flex flex-col py-3">
+                                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Balance</dt>
+                                <dd class="text-lg font-semibold">21/02/1997</dd>
+                            </div>
+                            <div class="flex flex-col py-3">
+                                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Total Spent Money</dt>
+                                <dd class="text-lg font-semibold">Male</dd>
+                            </div> -->
+                        </dl>
+                    </div>
+                  
+                </div>
+                
+            </div>
+        </div>
+        <div x-show="openTab === 3">
+            <div class="w-full my-auto py-6 flex flex-col justify-center gap-2">
+                <div class="w-full flex sm:flex-row xs:flex-col gap-2 justify-center">
+                    <div class="w-full">
+                        <dl id="fav" class="text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700" style="border:1px solid rgb(180, 180, 180);border-radius:5px;padding: 10px;">
+                            <!-- <div class="flex flex-col pb-3">
+                                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400"></dt>
+                                <dd class="text-lg font-semibold">Samuel</dd>
+                            </div>
+                            <div class="flex flex-col py-3">
+                                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">e-mail</dt>
+                                <dd class="text-lg font-semibold">Abera</dd>
+                            </div>
+                            <div class="flex flex-col py-3">
+                                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Balance</dt>
+                                <dd class="text-lg font-semibold">21/02/1997</dd>
+                            </div>
+                            <div class="flex flex-col py-3">
+                                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Total Spent Money</dt>
+                                <dd class="text-lg font-semibold">Male</dd>
+                            </div> -->
+                        </dl>
+                    </div>
+                  
+                </div>
+
+            </div>
+        </div>
       
     </div>
 </div>
@@ -175,7 +232,7 @@
             </div>
         </div>
     </section>
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="/src/script/userDetail.js"></script>
 </body>
 </html>
