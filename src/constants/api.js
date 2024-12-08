@@ -1,4 +1,4 @@
-const BASE_URL = "https://mica-grape-scabiosa.glitch.me/";
+const BASE_URL = "https://debug-legends-api.glitch.me";
 
 const endpoints = {
   events: "/events",
