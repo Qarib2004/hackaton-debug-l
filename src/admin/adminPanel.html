@@ -9,23 +9,20 @@
     <section>
       <div class="container">
         <div class="sidebar w-dvw h-dvh bg-gray-200 grid grid-cols-7">
-          <!-- SideBar -->
           <div class="col-span-1 bg-white">
             <div
               class="p-2 h-full w-full flex flex-col bg-white dark:bg-gray-900 border-r border-r-gray-200"
             >
-              <!-- Logo -->
-              <!-- <a href="#">
+              <a href="#">
                 <div
                   class="flex justify-center lg:justify-start items-center gap-2 py-2 px-0 md:px-2 lg:px-4 cursor-pointer"
                 >
                   <img
-                    src="https://cdn.dribbble.com/userupload/14991397/file/original-c526847594b232ccf3d2c5f8c229a3e3.jpg?resize=2048x1536&vertical=center"
+                    src="../images/changeslast.jpg"
                     alt=""
                   />
                 </div>
-              </a> -->
-
+              </a>
               <div
                 class="flex flex-col h-full overflow-y-auto overflow-x-hidden flex-grow pt-2 justify-between"
               >
@@ -197,6 +194,51 @@
             </table>
           </div>
         </div>
+        <div id="editModal" class="hidden fixed z-10 inset-0 overflow-y-auto">
+            <div class="flex items-center justify-center min-h-screen">
+              <div class="bg-white p-6 rounded shadow-md w-full max-w-lg">
+                <h2 class="text-xl font-bold mb-4">Edit Event</h2>
+                <form id="editEventForm">
+                  <div class="mb-4">
+                    <label for="editName" class="block text-sm font-medium text-gray-700">Name</label>
+                    <input type="text" id="editName" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                  </div>
+                  <div class="mb-4">
+                    <label for="editCategory" class="block text-sm font-medium text-gray-700">Category</label>
+                    <input type="text" id="editCategory" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                  </div>
+                  <div class="mb-4">
+                    <label for="editDescription" class="block text-sm font-medium text-gray-700">Description</label>
+                    <textarea id="editDescription" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm"></textarea>
+                  </div>
+                  <div class="mb-4">
+                    <label for="editAge" class="block text-sm font-medium text-gray-700">Age Restriction</label>
+                    <input type="text" id="editAge" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                  </div>
+                  <div class="mb-4">
+                    <label for="editDuration" class="block text-sm font-medium text-gray-700">Duration</label>
+                    <input type="text" id="editDuration" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                  </div>
+                  <div class="mb-4">
+                    <label for="editPrice" class="block text-sm font-medium text-gray-700">Price</label>
+                    <input type="number" id="editPrice" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                  </div>
+                  <div class="mb-4">
+                    <label for="editCategory" class="block text-sm font-medium text-gray-700">Category</label>
+                    <input type="text" id="editCategory" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                  </div>
+                  <div class="mb-4">
+                    <label for="editPrice" class="block text-sm font-medium text-gray-700">Price</label>
+                    <input type="number" id="editPrice" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                  </div>
+                  <div class="flex justify-end">
+                    <button type="button" id="cancelEdit" class="text-gray-500 mr-4">Cancel</button>
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
       </div>
     </section>
     <script src="https://cdn.tailwindcss.com"></script>
