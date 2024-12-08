@@ -1,0 +1,7 @@
+#userInfo{
+ color: white ;
+ display: flex;
+ gap: 20px;
+ font-size: 15px;
+ font-weight: bold;
+}
