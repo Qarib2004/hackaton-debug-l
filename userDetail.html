@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>User Detail</title>
+    <style>
+#abaut{
+    color: #1a2D42;
+}
+#buyed{
+    color: #1a2D42;
+}
+#bigName{
+    color: #1a2D42;
+    font-weight: 600;
+}
+
+    </style>
+</head>
+<body>
+    <nav class="bg-gray-800 text-white py-3 px-4 flex items-center justify-between">
+        <a class="font-bold text-xl tracking-tight" href="#">My Profil</a>
+        <div class="flex items-center">
+            <a class="text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-700" href="#">Home</a>
+            <a class="text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-700" href="#">Contact</a>
+            <a class="text-sm px-4 py-2 leading-none rounded-full hover:bg-gray-700" href="#">Log Out</a>
+        </div>
+    </nav>
+    <section class="w-full overflow-hidden dark:bg-gray-900">
+
+        <div class="flex flex-col ">
+            
+            <img src="./src/images/original-dde376fb766e5e28ea29288d4d58ee63.jpg" alt="User Cover"
+                style="background-color: #0F1C24;"    class="w-full  object-contain xl:h-[20rem] lg:h-[18rem] md:h-[16rem] sm:h-[14rem] xs:h-[11rem]" />
+    
+            
+            <div class="sm:w-[80%] xs:w-[90%] mx-auto flex">
+                <img src="https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw3fHxwZW9wbGV8ZW58MHwwfHx8MTcxMTExMTM4N3ww&ixlib=rb-4.0.3&q=80&w=1080" alt="User Profile"
+                     id="imagee"   class="rounded-md lg:w-[12rem] lg:h-[12rem] md:w-[10rem] md:h-[10rem] sm:w-[8rem] sm:h-[8rem] xs:w-[7rem] xs:h-[7rem] outline outline-2 outline-offset-2 outline-gray-50 relative lg:bottom-[5rem] sm:bottom-[4rem] xs:bottom-[3rem]" />
+    
+                
+                <h1
+                id="bigName"
+                    class="w-full text-left my-4 sm:mx-4 xs:pl-4 text-gray-800 dark:text-white lg:text-4xl md:text-3xl sm:text-3xl xs:text-xl font-serif">
+                    Samuel Abera</h1>
+    
+            </div>
+    
+            <div
+                class="xl:w-[80%] lg:w-[90%] md:w-[90%] sm:w-[92%] xs:w-[90%] mx-auto flex flex-col gap-4 items-center relative lg:-top-8 md:-top-6 sm:-top-4 xs:-top-4">
+                <!-- Description -->
+                <script src="//unpkg.com/alpinejs"></script>
+<div x-data="{ 
+            openTab: 1,
+            activeClasses: 'border-l border-t border-r rounded-t text-blue-700',
+            inactiveClasses: 'text-blue-500 hover:text-blue-700'
+        }" class="p-6">
+    <ul class="flex border-b">
+        <li @click="openTab = 1" :class="{ '-mb-px': openTab === 1 }" class="-mb-px mr-1">
+            <a href="#" :class="openTab === 1 ? activeClasses : inactiveClasses" id="abaut"
+                class="bg-white text-gray-800 inline-block py-2 px-4 font-semibold ">
+                About
+            </a>
+        </li>
+        <li @click="openTab = 2" :class="{ '-mb-px': openTab === 2 }" class="mr-1">
+            <!-- Set active class by using :class provided by Alpine -->
+            <a href="#" :class="openTab === 2 ? activeClasses : inactiveClasses"
+              id="buyed"  class="bg-white inline-block py-2 px-4 font-semibold">
+                Buyed Ticket
+            </a>
+        </li>
+        <li @click="openTab = 3" :class="{ '-mb-px': openTab === 3 }" class="mr-1">
+            <!-- Set active class by using :class provided by Alpine -->
+            <a href="#" :class="openTab === 3 ? activeClasses : inactiveClasses"
+              id="buyed"  class="bg-white inline-block py-2 px-4 font-semibold">
+                Favorites
+            </a> 
+        </li>
+  
+    </ul>
+
+    <div class="w-full">
+        <div x-show="openTab === 1">
+            <div class="w-full my-auto py-6 flex flex-col justify-center gap-2">
+                <div class="w-full flex sm:flex-row xs:flex-col gap-2 justify-center">
+                    <div class="w-full">
+                        <dl id="cards" class="text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700"  style="border:1px solid rgb(180, 180, 180);border-radius:5px;padding: 10px;">
+                            <!-- <div class="flex flex-col pb-3">
+                                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Name</dt>
+                                <dd class="text-lg font-semibold">Samuel</dd>
+                            </div>
+                            <div class="flex flex-col py-3">
+                                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">e-mail</dt>
+                                <dd class="text-lg font-semibold">Abera</dd>
+                            </div>
+                            <div class="flex flex-col py-3">
+                                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Balance</dt>
+                                <dd class="text-lg font-semibold">21/02/1997</dd>
+                            </div>
+                            <div class="flex flex-col py-3">
+                                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Total Spent Money</dt>
+                                <dd class="text-lg font-semibold">Male</dd>
+                            </div> -->
+                        </dl>
+                    </div>
+                  
+                </div>
+                
+                <div class="my-10 lg:w-[70%] md:h-[14rem] xs:w-full xs:h-[10rem]">
+                    <!--  -->
+               
+                    <!-- Location -->
+                    
+                </div>
+            </div>
+        </div>
+        <div x-show="openTab === 2">
+            <div class="w-full my-auto py-6 flex flex-col justify-center gap-2">
+                <div class="w-full flex sm:flex-row xs:flex-col gap-2 justify-center">
+                    <div class="w-full">
+                        <dl id="tickets" class="text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700" style="border:1px solid rgb(180, 180, 180);border-radius:5px;padding: 10px;">
+                            <!-- <div class="flex flex-col pb-3">
+                                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Name</dt>
+                                <dd class="text-lg font-semibold">Samuel</dd>
+                            </div>
+                            <div class="flex flex-col py-3">
+                                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">e-mail</dt>
+                                <dd class="text-lg font-semibold">Abera</dd>
+                            </div>
+                            <div class="flex flex-col py-3">
+                                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Balance</dt>
+                                <dd class="text-lg font-semibold">21/02/1997</dd>
+                            </div>
+                            <div class="flex flex-col py-3">
+                                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Total Spent Money</dt>
+                                <dd class="text-lg font-semibold">Male</dd>
+                            </div> -->
+                        </dl>
+                    </div>
+                  
+                </div>
+                
+            </div>
+        </div>
+        <div x-show="openTab === 3">
+            <div class="w-full my-auto py-6 flex flex-col justify-center gap-2">
+                <div class="w-full flex sm:flex-row xs:flex-col gap-2 justify-center">
+                    <div class="w-full">
+                        <dl id="fav" class="text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700" style="border:1px solid rgb(180, 180, 180);border-radius:5px;padding: 10px;">
+                            <!-- <div class="flex flex-col pb-3">
+                                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400"></dt>
+                                <dd class="text-lg font-semibold">Samuel</dd>
+                            </div>
+                            <div class="flex flex-col py-3">
+                                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">e-mail</dt>
+                                <dd class="text-lg font-semibold">Abera</dd>
+                            </div>
+                            <div class="flex flex-col py-3">
+                                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Balance</dt>
+                                <dd class="text-lg font-semibold">21/02/1997</dd>
+                            </div>
+                            <div class="flex flex-col py-3">
+                                <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Total Spent Money</dt>
+                                <dd class="text-lg font-semibold">Male</dd>
+                            </div> -->
+                        </dl>
+                    </div>
+                  
+                </div>
+
+            </div>
+        </div>
+      
+    </div>
+</div>
+                <!-- Detail -->
+              
+    
+                <!-- Social Links -->
+                <div
+                    class="fixed right-2 bottom-20 flex flex-col rounded-sm bg-gray-200 text-gray-500 dark:bg-gray-200/80 dark:text-gray-700 hover:text-gray-600 hover:dark:text-gray-400">
+                    <a href="https://www.linkedin.com/in/samuel-abera-6593a2209/">
+                        <div class="p-2 hover:text-primary hover:dark:text-primary">
+                            <svg class="lg:w-6 lg:h-6 xs:w-4 xs:h-4 text-blue-500" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M12.51 8.796v1.697a3.738 3.738 0 0 1 3.288-1.684c3.455 0 4.202 2.16 4.202 4.97V19.5h-3.2v-5.072c0-1.21-.244-2.766-2.128-2.766-1.827 0-2.139 1.317-2.139 2.676V19.5h-3.19V8.796h3.168ZM7.2 6.106a1.61 1.61 0 0 1-.988 1.483 1.595 1.595 0 0 1-1.743-.348A1.607 1.607 0 0 1 5.6 4.5a1.601 1.601 0 0 1 1.6 1.606Z"
+                                    clip-rule="evenodd" />
+                                <path d="M7.2 8.809H4V19.5h3.2V8.809Z" />
+                            </svg>
+    
+                        </div>
+                    </a>
+                    <a href="https://twitter.com/Samuel7Abera7">
+                        <div class="p-2 hover:text-primary hover:dark:text-primary">
+                            <svg class="lg:w-6 lg:h-6 xs:w-4 xs:h-4 text-gray-900" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path
+                                    d="M13.795 10.533 20.68 2h-3.073l-5.255 6.517L7.69 2H1l7.806 10.91L1.47 22h3.074l5.705-7.07L15.31 22H22l-8.205-11.467Zm-2.38 2.95L9.97 11.464 4.36 3.627h2.31l4.528 6.317 1.443 2.02 6.018 8.409h-2.31l-4.934-6.89Z" />
+                            </svg>
+    
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="p-2 hover:text-blue-500 hover:dark:text-blue-500">
+                            <svg class="lg:w-6 lg:h-6 xs:w-4 xs:h-4 text-blue-700" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M13.135 6H15V3h-1.865a4.147 4.147 0 0 0-4.142 4.142V9H7v3h2v9.938h3V12h2.021l.592-3H12V6.591A.6.6 0 0 1 12.592 6h.543Z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </a>
+                    <a href="https://www.youtube.com/@silentcoder7">
+                        <div class="p-2 hover:text-primary hover:dark:text-primary">
+                            <svg class="lg:w-6 lg:h-6 xs:w-4 xs:h-4 text-red-600" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M21.7 8.037a4.26 4.26 0 0 0-.789-1.964 2.84 2.84 0 0 0-1.984-.839c-2.767-.2-6.926-.2-6.926-.2s-4.157 0-6.928.2a2.836 2.836 0 0 0-1.983.839 4.225 4.225 0 0 0-.79 1.965 30.146 30.146 0 0 0-.2 3.206v1.5a30.12 30.12 0 0 0 .2 3.206c.094.712.364 1.39.784 1.972.604.536 1.38.837 2.187.848 1.583.151 6.731.2 6.731.2s4.161 0 6.928-.2a2.844 2.844 0 0 0 1.985-.84 4.27 4.27 0 0 0 .787-1.965 30.12 30.12 0 0 0 .2-3.206v-1.516a30.672 30.672 0 0 0-.202-3.206Zm-11.692 6.554v-5.62l5.4 2.819-5.4 2.801Z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="/src/script/userDetail.js"></script>
+</body>
+</html>
