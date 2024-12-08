@@ -1,9 +1,10 @@
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://debug-legends-api.glitch.me";
 
 const endpoints = {
   events: "/events",
   tickets: "/tickets",
   users: "/users",
+  venues: "/venues"
 };
 
 export { endpoints };

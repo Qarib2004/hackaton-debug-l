@@ -1,17 +1,10 @@
 {
   "events": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Tech Conference 2024",
       "dateTime": "2024-12-15T09:00:00Z",
-      "venue": {
-        "name": "Tech Park Conference Hall",
-        "address": "123 Silicon Avenue, Baku, Azerbaijan",
-        "capacity": 500,
-        "description": "A state-of-the-art conference hall equipped with modern technology for hosting large-scale events.",
-        "contactEmail": "info@techpark.az",
-        "imageURL": "https://example.com/images/tech-park-hall.jpg"
-      },
+      "venueId": 1,
       "organizer": "Tech Innovators",
       "description": "An annual conference for tech enthusiasts to explore the latest trends in AI, IoT, and software development.",
       "ticketsAvailable": 200,
@@ -23,17 +16,10 @@
       "soldTickets": 300
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Live Music Night",
       "dateTime": "2024-12-20T19:30:00Z",
-      "venue": {
-        "name": "City Music Arena",
-        "address": "456 Harmony Street, Ganja, Azerbaijan",
-        "capacity": 1000,
-        "description": "A vibrant music arena hosting concerts, live performances, and festivals with excellent acoustics.",
-        "contactEmail": "contact@citymusicarena.az",
-        "imageURL": "https://example.com/images/city-music-arena.jpg"
-      },
+      "venueId": 2,
       "organizer": "Music Fest Co.",
       "description": "A night to enjoy live performances from renowned artists and local bands.",
       "ticketsAvailable": 50,
@@ -45,17 +31,10 @@
       "soldTickets": 600
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Startup Pitch Day 2024",
       "dateTime": "2024-11-30T10:00:00Z",
-      "venue": {
-        "name": "Startup Hub Auditorium",
-        "address": "789 Innovation Drive, Baku, Azerbaijan",
-        "capacity": 300,
-        "description": "A cozy auditorium perfect for workshops, seminars, and startup pitch events.",
-        "contactEmail": "auditorium@startuphub.az",
-        "imageURL": "https://example.com/images/startup-hub-auditorium.jpg"
-      },
+      "venueId": 3,
       "organizer": "Startup Incubator",
       "description": "Pitch your ideas to investors and gain mentorship from industry leaders.",
       "ticketsAvailable": 150,
@@ -67,17 +46,10 @@
       "soldTickets": 100
     },
     {
-      "id": "4",
+      "id": 4,
       "name": "Art Exhibition 2024",
       "dateTime": "2024-12-01T15:00:00Z",
-      "venue": {
-        "name": "Modern Art Gallery",
-        "address": "321 Creative Lane, Baku, Azerbaijan",
-        "capacity": 200,
-        "description": "A sophisticated gallery showcasing contemporary art and providing an inspiring venue for exhibitions.",
-        "contactEmail": "info@modernart.az",
-        "imageURL": "https://example.com/images/modern-art-gallery.jpg"
-      },
+      "venueId": 4,
       "organizer": "Artistic Minds",
       "description": "Explore the finest contemporary art from local and international artists.",
       "ticketsAvailable": 80,
@@ -241,6 +213,46 @@
       "price": 130,
       "purchaseDate": "2024-11-16T09:00:00Z",
       "ticketCode": "TK-005-IJ90B"
+    }
+  ],
+
+  "venues": [
+
+    {
+      "id":1,
+      "name": "Tech Park Conference Hall",
+        "address": "123 Silicon Avenue, Baku, Azerbaijan",
+        "capacity": 500,
+        "description": "A state-of-the-art conference hall equipped with modern technology for hosting large-scale events.",
+        "contactEmail": "info@techpark.az",
+        "imageURL": "https://example.com/images/tech-park-hall.jpg"
+    },
+    {
+      "id": 2,
+      "name": "City Music Arena",
+      "address": "456 Harmony Street, Ganja, Azerbaijan",
+      "capacity": 1000,
+      "description": "A vibrant music arena hosting concerts, live performances, and festivals with excellent acoustics.",
+      "contactEmail": "contact@citymusicarena.az",
+      "imageURL": "https://example.com/images/city-music-arena.jpg"
+    },
+    {
+      "id":3,
+      "name": "Startup Hub Auditorium",
+      "address": "789 Innovation Drive, Baku, Azerbaijan",
+      "capacity": 300,
+      "description": "A cozy auditorium perfect for workshops, seminars, and startup pitch events.",
+      "contactEmail": "auditorium@startuphub.az",
+      "imageURL": "https://example.com/images/startup-hub-auditorium.jpg"
+    },
+    {
+      "id":4,
+      "name": "Modern Art Gallery",
+      "address": "321 Creative Lane, Baku, Azerbaijan",
+      "capacity": 200,
+      "description": "A sophisticated gallery showcasing contemporary art and providing an inspiring venue for exhibitions.",
+      "contactEmail": "info@modernart.az",
+      "imageURL": "https://example.com/images/modern-art-gallery.jpg"
     }
   ]
 }
